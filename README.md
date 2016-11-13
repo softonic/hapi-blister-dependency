@@ -2,8 +2,6 @@
 
 Hapi plugin to add the "dependencyId" handler to the server. That handler uses the dependency with the given ID as the handler for the route.
 
-Active maintainer: [ruben.norte@softonic.com](mailto:ruben.norte@softonic.com?subject=hapi-blister-dependency)
-
 ## Installation
 
 ```bash
@@ -55,7 +53,7 @@ npm test
 
 ## Contribute
 
-1. Fork it: `git clone ssh://git@stash.redtonic:7999/NODE/hapi-blister-dependency.git`
+1. Fork it: `git clone https://github.com/softonic/hapi-blister-dependency.git`
 2. Create your feature branch: `git checkout -b feature/my-new-feature`
 3. Commit your changes: `git commit -am 'Added some feature'`
 4. Check the build: `npm run build`

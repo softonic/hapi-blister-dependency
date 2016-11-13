@@ -5,10 +5,10 @@
   "description": "Hapi plugin to use a Blister container dependency as the handler of a route",
   "license": "Apache-2.0",
   "main": "index.js",
-  "homepage": "https://stash.redtonic/projects/NODE/repos/hapi-blister-dependency",
+  "homepage": "https://github.com/softonic/hapi-blister-dependency",
   "repository": {
     "type": "git",
-    "url": "ssh://git@stash.redtonic:7999/projects/NODE/repos/hapi-blister-dependency.git"
+    "url": "git+https://github.com/softonic/hapi-blister-dependency.git"
   },
   "files": [
     "es",
