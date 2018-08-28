@@ -19,7 +19,7 @@ describe('HapiBlisterDependency', () => {
   });
 
   describe('when it is registered', () => {
-    it('should register a handler that fetches the function from the given container', (done) => {
+    it('should register a handler that fetches the function from the given container', async () => {
       const fooHandler = (request, h) => h.response('OK');
       const container = new Container();
       container.service('foo-dependency', () => fooHandler);
@@ -33,10 +33,8 @@ describe('HapiBlisterDependency', () => {
         },
       });
 
-      server.inject('/foo').then((response) => {
-        expect(response.payload).toBe('OK');
-        done();
-      });
+      const response = await server.inject('/foo');
+      expect(response.payload).toBe('OK');
     });
   });
 });
