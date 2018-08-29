@@ -7,54 +7,29 @@ import packageJSON from '../package.json';
  * @example
  *
  * container.service('my-handler', () => {
- *   return (request, reply) => {
- *     reply('It works!');
+ *   return (request, h) => {
+ *     h.response('It works!');
  *   };
  * });
  *
- * // Registration
- * server.register({
- *   register: HapiBlisterDependency,
- *   options: {
- *     container
- *   }
- * }, error => {
- *
- *   // Usage
- *   server.route({
- *     path: '/test',
- *     handler: {
- *       dependencyId: 'my-handler'
- *     }
- *   });
- *
- *   // GET /test => It works!
+ * await server.register({
+ *   plugin: HapiBlisterDependency,
+ *   options: { container }
  * });
  *
  * @type {Object}
  */
-const HapiBlisterDependency = {
-
+export default{
+  pkg: packageJSON,
   /**
-   * Registers the plugin in the Hapi server
-   * @param  {hapi.Server}        server
-   * @param  {Object}             options
-   * @param  {blister.Container}  options.container
-   * @param  {Function}           notifyRegistration
-   */
-  register(server, options, notifyRegistration) {
-    const container = options.container;
+  * Registers the plugin in the Hapi server
+  * @param  {hapi.Server}        server
+  * @param  {Object}             options
+  * @param  {blister.Container}  options.container
+  */
+  register(server, options) {
+    const { container } = options;
 
-    server.handler('dependencyId', (route, dependencyId) => {
-      return container.get(dependencyId);
-    });
-
-    notifyRegistration();
-  }
+    server.decorate('handler', 'dependencyId', (route, dependencyId) => container.get(dependencyId));
+  },
 };
-
-HapiBlisterDependency.register.attributes = {
-  pkg: packageJSON
-};
-
-export default HapiBlisterDependency;
