@@ -21,26 +21,26 @@ import Blister from 'blister';
 const container = new Blister();
 
 container.service('my-handler', () => {
-  return (request, reply) => {
-    reply('It works!');
+  return (request, h) => {
+    h.response('It works!');
   };
 });
 
 // Registration
-server.register({
-  register: HapiBlisterDependency,
+await server.register({
+  plugin: HapiBlisterDependency,
   options: { container }
-}, error => {
-  // Usage
-  server.route({
-    path: '/test',
-    handler: {
-      dependencyId: 'my-handler'
-    }
-  });
-
-  // GET /test => It works!
 });
+
+server.route({
+  path: '/test',
+  handler: {
+    dependencyId: 'my-handler'
+  }
+});
+
+// GET /test => It works!
+
 ```
 
 ## Testing
