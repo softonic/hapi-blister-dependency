@@ -1,9 +1,9 @@
-import hapi from 'hapi';
+import Hapi from '@hapi/hapi';
 import Container from 'blister';
 import HapiBlisterDependency from '../index';
 
 function createServerWithPlugin({ container }) {
-  const server = new hapi.Server();
+  const server = new Hapi.Server();
 
   server.register({
     plugin: HapiBlisterDependency,
@@ -15,7 +15,7 @@ function createServerWithPlugin({ container }) {
 describe('HapiBlisterDependency', () => {
   it('should be a Hapi plugin', () => {
     expect(HapiBlisterDependency.register).toBeInstanceOf(Function);
-    expect(HapiBlisterDependency.pkg.name).toBe('hapi-blister-dependency');
+    expect(HapiBlisterDependency.pkg.name).toBe('@softonic/hapi-blister-dependency');
   });
 
   describe('when it is registered', () => {

@@ -5,17 +5,17 @@ Hapi plugin to add the "dependencyId" handler to the server. That handler uses t
 ## Installation
 
 ```bash
-npm install hapi-blister-dependency
+npm install @softonic/hapi-blister-dependency
 ```
 
 ## Usage
 
 ```javascript
 // CommonJS
-// const HapiBlisterDependency = require('hapi-blister-dependency');
+// const HapiBlisterDependency = require('@softonic/hapi-blister-dependency');
 
 // ES6
-import HapiBlisterDependency from 'hapi-blister-dependency';
+import HapiBlisterDependency from '@softonic/hapi-blister-dependency';
 import Blister from 'blister';
 
 const container = new Blister();
