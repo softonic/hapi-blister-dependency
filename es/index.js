@@ -19,8 +19,9 @@ import packageJSON from '../package.json';
  *
  * @type {Object}
  */
-export default{
+export default {
   pkg: packageJSON,
+
   /**
   * Registers the plugin in the Hapi server
   * @param  {hapi.Server}        server
@@ -30,6 +31,10 @@ export default{
   register(server, options) {
     const { container } = options;
 
-    server.decorate('handler', 'dependencyId', (route, dependencyId) => container.get(dependencyId));
+    server.decorate(
+      'handler',
+      'dependencyId',
+      (route, dependencyId) => container.get(dependencyId),
+    );
   },
 };
